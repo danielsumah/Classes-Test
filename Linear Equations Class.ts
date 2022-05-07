@@ -1,7 +1,12 @@
-"use strict";
 // This program creates a class for linear equations.
 class linearEquations {
-    constructor(a, b, c, d, e, f) {
+    _a: number;
+    _b:number;
+    _c:number;
+    _d:number;
+    _e:number;
+    _f:number;
+    constructor(a:number, b:number, c:number, d:number, e:number, f:number) {
         this._a = a;
         this._b = b;
         this._c = c;
@@ -9,46 +14,73 @@ class linearEquations {
         this._e = e;
         this._f = f;
     }
+
     get A() {
         return this._a;
     }
+
     get B() {
         return this._b;
     }
+
     get C() {
         return this._c;
     }
+
     get D() {
         return this._d;
     }
+
     get E() {
         return this._e;
     }
+
     get F() {
         return this._f;
     }
+
     get X() {
-        return ((this._e * this._d) - (this._b * this._f)) / ((this._a * this._d) - (this._b * this._c));
+        return ((this._e * this._d) - (this._b * this._f)) / ((this._a * this._d) - (this._b * this._c)); 
     }
+
     get Y() {
         return ((this._a * this._f) - (this._e * this._c)) / ((this._a * this._d) - (this._b * this._c));
     }
+
     isSolvable() {
-        return ((this._a * this._d) - (this._b * this._c)) != 0;
+        return ((this._a * this._d) - (this._b * this._c)) != 0
     }
 }
-function testCase(ar) {
+
+// Test function
+interface objType {
+    X:number,
+    Y:number;
+    isSolvable():boolean;
+    _a: number;
+    _b:number;
+    _c:number;
+    _d:number;
+    _e:number;
+    _f:number;
+    
+}
+function testCase(ar:objType):void {
     if (ar.isSolvable()) {
         console.log("x is", ar.X, "and y is", ar.Y);
     }
     else {
-        console.log("The equation has no solution");
+        console.log("The equation has no solution")
     }
+    
 }
+
 // Test variables
 const newCase = new linearEquations(9.0, 4.0, 3.0, -5.0, -6.0, -21.0);
 const otherCase = new linearEquations(1.0, 2.0, 2.0, 4.0, 4.0, 5.0);
+
 // Function call for test cases
 testCase(newCase);
 testCase(otherCase);
+
 // Done! Bonne! 
